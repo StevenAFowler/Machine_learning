@@ -24,11 +24,11 @@ class OffensivePlayer:
         # Assume all moves are possible
         prop = np.ones(8)
 
-        # Bias moves towards target
-        if self.resource <= 0:
-            resource_bias = np.array([0,0,2,6,2,0,0,0])
-        else:
-            resource_bias = np.array([2,0,0,0,0,0,2,6])
+        # # Bias moves towards target
+        # if self.resource <= 0:
+        #     resource_bias = np.array([0,0,2,6,2,0,0,0])
+        # else:
+        #     resource_bias = np.array([2,0,0,0,0,0,2,6])
 
         # Distance between all possibilities
         if self.resource <= 0:
