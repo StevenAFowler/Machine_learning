@@ -15,6 +15,6 @@ Tower defense game
 
 * TBC
 
-Tic tak toe game
+Tic tac toe game
 
 * TBC
