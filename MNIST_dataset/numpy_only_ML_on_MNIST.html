@@ -13117,9 +13117,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=81d82af9"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ML-handwriting-recognition-only-using-numpy">ML handwriting recognition only using numpy<a class="anchor-link" href="#ML-handwriting-recognition-only-using-numpy">¶</a></h1><h3 id="Steven-Fowler-(see-more-projects-here)">Steven Fowler <a href="https://stevenafowler.github.io/profile/" id="headerlink" target="_blank">(see more projects here)</a><a class="anchor-link" href="#Steven-Fowler-(see-more-projects-here)">¶</a></h3><img alt="No description has been provided for this image" id="headerimage" src="../assets/images/MNIST_example.png"/>
-<p>The rise of Big Data and statistical learning in the late 2000s laid the foundation of the Deep leaning in 2010s. A popular tutorial in deep learning at this time was character recognition, however Tensorflow did not exist and scikit didn't support neural networks (if I remember correctly). So, these tutorials were all based in numpy - which I think was a great foundation in learning how ML and NN work.</p>
-<p>This is my implementation of character recignition based on the MNIST dataset on only using numpy of my neural network.</p>
+<h1 id="AI-character-recognition">AI character recognition<a class="anchor-link" href="#AI-character-recognition">¶</a></h1><h3 id="Steven-Fowler-(see-more-projects-here)">Steven Fowler <a href="https://stevenafowler.github.io/profile/" id="headerlink" target="_blank">(see more projects here)</a><a class="anchor-link" href="#Steven-Fowler-(see-more-projects-here)">¶</a></h3><img alt="No description has been provided for this image" id="headerimage" src="../assets/images/MNIST_example.png"/>
+<p>The rise of Big Data and statistical learning in the late 2000s laid the foundation of the Deep leaning in 2010s. A popular example in deep learning at this time was character recognition, however Tensorflow did not exist and scikit didn't support neural networks (if I remember correctly), so these examples were solely based on numpy - which I think was a great foundation in learning how ML and NN work.</p>
+<p>This is my implementation of character recognition based on the MNIST dataset on only using numpy of my neural network.</p>
 <h3 id="What-I-did">What I did<a class="anchor-link" href="#What-I-did">¶</a></h3><ul>
 <li>Create a simple neutral network (NN) using numpy</li>
 <li>The NN will recognize handwriting based on MINST dataset</li>
@@ -13137,10 +13137,10 @@ div#notebook {
 </ul>
 <h3 id="Further-work">Further work<a class="anchor-link" href="#Further-work">¶</a></h3><p>Implement/add:</p>
 <ul>
-<li>More hidden layers - Increase prediction performance</li>
-<li>Convolution layers - Increase training speed and prediction performance</li>
-<li>Batch training     - Increase training speed</li>
-<li>Dropout            - Reduce overfitting and improve robustness</li>
+<li>More hidden layers        - Increase prediction performance</li>
+<li>Convolution layers        - Increase training speed and prediction performance</li>
+<li>Batch training            - Increase training speed</li>
+<li>Dropout/regularization    - Reduce overfitting and improve robustness</li>
 </ul>
 </div>
 </div>
@@ -13155,7 +13155,7 @@ div#notebook {
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=2805ae21">
 <details class="input">
 <summary> Show code </summary>
-<div class="prompt input_prompt">In [8]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># https://www.geeksforgeeks.org/machine-learning/mnist-dataset/</span>
@@ -13243,15 +13243,15 @@ Y_test:  (10000,)
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="One-hot-encoding">One-hot encoding<a class="anchor-link" href="#One-hot-encoding">¶</a></h3><p>One-hot encoding converts the true label (int value) into boolean array. In this case an array of size 10 where location 0 to 9 (i.e. array[0] to array[9]) corresponds to a value of 0 to 9.</p>
-<p>This one-hot encoded true labels allows for easy comparison of the output layer which is also an array of size 10, where a value at array location 0 to 9 (i.e. array[0] to array[9]) corresponds to the likelihood of the image showing a value of 0 to 9.</p>
-<p>The method for encoding was copped from here (<a href="https://numpy.org/numpy-tutorials/tutorial-deep-learning-on-mnist/">link</a>) where the author used a cool broadcasting to create the boolean matrix.</p>
+<p>The one-hot encoded true labels allows for easy comparison of the output layer which is also an array of size 10, where a value at array location 0 to 9 (i.e. array[0] to array[9]) corresponds to the likelihood of the image showing a value of 0 to 9.</p>
+<p>The method for encoding was copied from here (<a href="https://numpy.org/numpy-tutorials/tutorial-deep-learning-on-mnist/">link</a>) where the author used a cool broadcasting technique to create the boolean matrix.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=0b5c4f8e">
 <details class="input">
 <summary> Show code </summary>
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># One-hot encoding</span>
@@ -13309,14 +13309,14 @@ one-hot array: [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.] -&gt; true label: 4
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Activation-functions">Activation functions<a class="anchor-link" href="#Activation-functions">¶</a></h2><p>The ReLU (rectified linear unit) is a simple activation function that outputs 0 for negative values and maintains any positive value. This introducing non-linearity in a computationally efficient manner. Also, the derivative is simply 0 or 1 for negative and positive values respectively.</p>
-<p>Softmax converts the layer into a probability distribution, which is great for classification problems like the MINST dataset. In this case the derivative can be estimated from the error (= predicted_y - true_y),</p>
+<p>Softmax converts the layer into a probability distribution, which is great for classification problems like the MINST dataset. In this case the derivative can be estimated from the error (= predicted_y - true_y).</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=f8de3faa">
 <details class="input">
 <summary> Show code </summary>
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#################################################################</span>
@@ -13356,7 +13356,7 @@ one-hot array: [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.] -&gt; true label: 4
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=47f35579">
 <details class="input">
 <summary> Show code </summary>
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#################################################################</span>
@@ -13405,14 +13405,14 @@ one-hot array: [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.] -&gt; true label: 4
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=329b9a60"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Loss-function">Loss function<a class="anchor-link" href="#Loss-function">¶</a></h3><p>The Categorical Cross-Entropy (CCE) is standard function to measure performance in classification models. It requires an input of probability distribution (which we get from  the softmax function) and calculates the difference from predicted distribution and true distribution (one-hot label). Note: the log function stretches the predicted distribution resulting in the difference in value being exaggerated.</p>
+<h3 id="Loss-function">Loss function<a class="anchor-link" href="#Loss-function">¶</a></h3><p>The Categorical Cross-Entropy (CCE) is a standard function to measure performance in classification models. It requires an input of probability distribution (which we get from  the softmax function) and calculates the difference from predicted distribution and true distribution (one-hot label). Note: the log function stretches the predicted distribution resulting in the difference in value being exaggerated.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=6afbfdb4">
 <details class="input">
 <summary> Show code </summary>
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Loss function</span>
@@ -13434,7 +13434,7 @@ one-hot array: [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.] -&gt; true label: 4
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=e2321120">
 <details class="input">
 <summary> Show code </summary>
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Hyperparameters</span>
@@ -13538,7 +13538,7 @@ Test Loss: 0.09153797648262545
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=8346d66d">
 <details class="input">
 <summary> Show code </summary>
-<div class="prompt input_prompt">In [14]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting</span>
@@ -13566,7 +13566,7 @@ Test Loss: 0.09153797648262545
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>Text(0, 0.5, 'Loss')</pre>
 </div>
